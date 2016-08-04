@@ -10,6 +10,9 @@
     EDXAPP_NO_PREREQ_INSTALL: 0
     COMMON_SSH_PASSWORD_AUTH: "yes"
     EDXAPP_LMS_BASE: 127.0.0.1:8000
+    ECOMMERCE_ECOMMERCE_DOMAIN: "localhost:8002"
+    ECOMMERCE_PARTNER_CODE: edx
+    OTTO_MULTITENANT_SETUP_FROM_EMAIL: devstack-notifications@edx.org
     EDXAPP_OAUTH_ENFORCE_SECURE: false
     EDXAPP_LMS_BASE_SCHEME: http
     ECOMMERCE_DJANGO_SETTINGS_MODULE: "ecommerce.settings.devstack"
@@ -36,3 +39,4 @@
     - local_dev
     - demo
     - oauth_client_setup
+    - otto_multitenant_setup
