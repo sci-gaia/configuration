@@ -21,12 +21,15 @@ demo_version: "master"
 demo_hashed_password: 'pbkdf2_sha256$20000$TjE34FJjc3vv$0B7GUmH8RwrOc/BvMoxjb5j8EgnWTt3sxorDANeF7Qw=' # edx
 demo_test_users:
   - email: 'honor@example.com'
+    username: honor
     mode: honor
     hashed_password: "{{ demo_hashed_password }}"
   - email: 'audit@example.com'
+    username: audit
     mode: audit
     hashed_password: "{{ demo_hashed_password }}"
   - email: 'verified@example.com'
+    username: verified
     mode: verified
     hashed_password: "{{ demo_hashed_password }}"
 

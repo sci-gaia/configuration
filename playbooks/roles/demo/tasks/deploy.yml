@@ -16,7 +16,7 @@
 
 - name: create some test users
   shell: >
-    {{ demo_edxapp_venv_bin }}/python ./manage.py lms --settings=aws --service-variant lms manage_user {{ item.email }} {{ item.email }} --initial-password-hash {{ item.hashed_password }}
+    {{ demo_edxapp_venv_bin }}/python ./manage.py lms --settings=aws --service-variant lms manage_user {{ item.username}} {{ item.email }} --initial-password-hash '{{ item.hashed_password }}'
     chdir={{ demo_edxapp_code_dir }}
   become_user: "{{ common_web_user }}"
   with_items: demo_test_users
@@ -24,7 +24,7 @@
 
 - name: create staff user
   shell: >
-    {{ demo_edxapp_venv_bin }}/python ./manage.py lms --settings=aws --service-variant lms manage_user staff@example.com staff@example.com --initial-password-hash "{{ demo_hashed_password }}" --staff
+    {{ demo_edxapp_venv_bin }}/python ./manage.py lms --settings=aws --service-variant lms manage_user staff staff@example.com --initial-password-hash '{{ demo_hashed_password }}' --staff
     chdir={{ demo_edxapp_code_dir }}
   become_user: "{{ common_web_user }}"
   when:
