@@ -61,7 +61,7 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-            <SSO entityID="{{shib.idp_entity_id}}">
+            <SSO discoveryProtocol="SAMLDS" discoveryURL="{{shib.discovery_url}}">
               SAML2 SAML1
             </SSO>
 
@@ -98,8 +98,8 @@
         </MetadataProvider>
         -->
         <!-- Automatically download and refresh the IDP's metadata. -->
-        <MetadataProvider type="XML" uri="{{shib.idp_metadata_url}}"
-             backingFilePath="/etc/shibboleth/metadata/idp-metadata.xml"
+        <MetadataProvider type="XML" uri="{{shib.fed_metadata_url}}"
+             backingFilePath="idp-metadata.xml"
              reloadInterval="7200" >
         </MetadataProvider>
 
@@ -133,7 +133,6 @@
         <!--
         <ApplicationOverride id="admin" entityID="https://admin.example.org/shibboleth"/>
         -->
-        <ApplicationOverride id="class" entityID="{{shib.sp_entity_id}}"/>
     </ApplicationDefaults>
     
     <!-- Policies that determine how to process and authenticate runtime messages. -->

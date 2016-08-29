@@ -4,6 +4,10 @@
   gather_facts: True
   vars:
     serial_count: 1
+    secure_dir: '../../../configuration-secure/ansible'
+  vars_files:
+    - "{{ secure_dir }}/vars/shib_prod_vars.yml"
+    - "{{ secure_dir }}/vars/apache_prod_vars.yml"
   serial: "{{ serial_count }}"
   roles:
     - aws
@@ -29,3 +33,7 @@
       when: COMMON_ENABLE_NEWRELIC
     - role: minos
       when: COMMON_ENABLE_MINOS
+    - apache
+    - shibboleth
+    # run this role last
+    - in_production
